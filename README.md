@@ -14,6 +14,11 @@ Currently, the generation logic is fully inside UE5 Blueprints for rapid prototy
 The next phase will move all logic to a dedicated Go server and send only the final dungeon data to UE5 for rendering.
 
 ## ⚙️ Algorithms Used
+I used https://github.com/vazgriz/DungeonGenerator as starting point, here shows you how to do it inside Unity3D. 
+I decided to use Unreal in order to experiment and learn. The repository mentioned does not provide code to place assets,
+considering that I created a grid based system that generates each part of the dungeon with a specific type that 
+will enable the rendering of each section with a specific asset.
+
 ### 1. Room Placement
 - Randomly positions rooms inside a grid
 - Adds a buffer zone to avoid overlapping rooms 
@@ -34,6 +39,11 @@ The next phase will move all logic to a dedicated Go server and send only the fi
   - Room → Higher cost to avoid overwriting rooms
   - Hallway → Low cost for shared paths
   - Empty → Default cost
+
+### 5. Generate a unique grid
+- Creates a grid in witch coordinate determines the type of cell
+- Each type represent a different asset to render
+- The algorithm consideres overlapping hallways, that creates interesting paths
 
 ## 📸 Screenshots
 I use debug lines of different colors to represent each section of the dungeon:
